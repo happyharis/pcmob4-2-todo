@@ -17,11 +17,7 @@ export default function NotesScreen({ navigation, route }) {
       .firestore()
       .collection("todos")
       .onSnapshot((collection) => {
-        const updatedNotes = collection.docs.map((doc) => {
-          const data = doc.data();
-          data.id = doc.id;
-          return data;
-        });
+        const updatedNotes = collection.docs.map((doc) => doc.data());
         setNotes(updatedNotes);
       });
 
